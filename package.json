@@ -5,15 +5,15 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build:docs": "jsdoc simulator/src/* -c conf.json -t ./node_modules/better-docs",
+    "build:docs": "node init && jsdoc simulator/src/* -c conf.json -t ./node_modules/better-docs",
     "watch:doc-src": "npx nodemon --exec 'npm run build:docs' --watch simulator/src/",
     "watch:doc-output": "npx livereload out",
     "watch:docs": "npm run watch:doc-output & npm run watch:doc-src",
     "lint": "eslint ./simulator",
     "postinstall": "opencollective-postinstall || true",
     "prepare": "husky .",
-    "build": "VITE_BASE=/simulator-v0/ node esbuild.config.js",
-    "build-vue-simulator": "cd cv-frontend-vue && VITE_BASE=/simulator-v0/ npm run build && cd .."
+    "build": "node init && VITE_BASE=/simulator-v0/ node esbuild.config.js",
+    "build-vue-simulator": "node init && cd cv-frontend-vue && VITE_BASE=/simulator-v0/ npm run build && cd .."
   },
   "devDependencies": {
     "@babel/preset-env": "^7.26.7",

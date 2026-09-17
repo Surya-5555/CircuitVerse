@@ -72,7 +72,6 @@ config/private.pem
 config/public.pem
 *.pem
 
-.env
 .eslintcache
 
 /app/assets/builds/*
@@ -87,7 +86,6 @@ config/credentials.yml.enc
 /config/master.key
 
 # Ignore all files of .vscode except launch.json
-.vscode/*
 !.vscode/launch.json
 
 
@@ -102,8 +100,11 @@ node_modules
 .gem_rbs_collection
 
 # Ignore .vscode/settings.json
-.vscode/settings.json
 
 # Ignore yarn
 .yarn
 vendor
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+config.bat
