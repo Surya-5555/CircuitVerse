@@ -58,6 +58,21 @@ RSpec.describe Api::V1::UsersController, "#update", type: :request do
       end
     end
 
+    context "when authenticated but submitting an empty name (THE BUG)" do
+      before do
+        token = get_auth_token(user)
+        # We send an empty name, which is invalid
+        patch "/api/v1/users/#{user.id}",
+              params: { name: "" }, 
+              headers: { Authorization: "Token #{token}" }, as: :json
+      end
+
+      it "returns a 422 error gracefully" do
+        # This is what SHOULD happen
+        expect(response).to have_http_status(:unprocessable_entity) 
+      end
+    end
+
     # There is a image data
     context "when authenticated as the user and update the profile picture", :skip_windows do
       before do
